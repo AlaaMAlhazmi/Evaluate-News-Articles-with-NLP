@@ -2,23 +2,53 @@ var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 // environment variables requirments
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config()
+const application_key = process.env.API_KEY
+// bring window.fetch to Node.js
+const fetch = require('node-fetch')
+var bodyParser = require('body-parser')
 
 const app = express()
 
-app.use(express.static('dist'))
+app.use(bodyParser.json());
+app.use(express.static('../../dist'))
+// app.use(express.urlencoded({ extended: true }))
 
-console.log(__dirname)
+//console.log(__dirname)
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    //res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('../../dist/index.html'))
 })
 
+
+app.post('/sentimentapi', async(req, res) =>{
+
+	let apiUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${application_key}&url=${req.body.userUrl}&lang=en`;
+
+	let response = await fetch(apiUrl);
+	let data = await response.json();
+
+	if(!response.ok){
+		throw new Error;
+	}
+
+	if(data.status.msg === 'OK'){
+		const evaluation = {};
+		evaluation.agreement = data.agreement;
+		evaluation.confidence = data.confidence;
+		evaluation.irony = data.irony;
+		evaluation.subjectivity = data.subjectivity;
+
+		res.json(evaluation)
+
+	} else {
+		res.json({msg: data.status.msg})
+	}
+})
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+app.listen(8081, function () {
+    console.log('Example app listening on port 8081!')
 })
 
 app.get('/test', function (req, res) {

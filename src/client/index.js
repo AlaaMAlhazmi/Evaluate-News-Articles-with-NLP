@@ -1,7 +1,8 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
+import './js/app.js';
+// './js/helpers.js';
 
-console.log(checkForName);
+//console.log(checkForName);
 
-alert("I EXIST")
-console.log("CHANGE!!");
+//evaluateSentiment('/sentimentapi', 'http://weevil.info/');
