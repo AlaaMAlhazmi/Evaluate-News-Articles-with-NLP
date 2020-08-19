@@ -10,3 +10,18 @@ input {
     line-height: 16px;
     margin: 10px 0;
 }
+
+.validation-text {
+	display: none;
+}
+
+.was-validated {
+	input {
+		border: 1.5px solid #971515;
+	}
+
+	.validation-text {
+		display: block;
+		color: #971515;
+	}
+}

@@ -1,7 +1,8 @@
-import {handleError} from './helpers.js';
+import {handleError, validateForm} from './helpers.js';validateForm
+const fetch = require('node-fetch');
 //* Main Functions *//
 //Handle API Call
-const evaluateSentiment = async (url='', userUrl='') =>{
+export const evaluateSentiment = async (url='', userUrl='') =>{
 
 	//post entry to server
 	const response = await fetch(url, {
@@ -18,12 +19,12 @@ const evaluateSentiment = async (url='', userUrl='') =>{
 	if(!response.ok){
 		throw new Error;
 	}
-
 	return data;
 }
 
 // Return User Url
 const getUserUrl = ()=>{
+
 	const userUrl =  document.getElementById('user-url').value;
 	return userUrl;
 }
@@ -31,7 +32,6 @@ const getUserUrl = ()=>{
 // Update UI
 const updateUI = (data)=>{
 	const resultDiv = document.getElementById('results');
-	resultDiv.innerHTML = ``;
 	
 	Object.keys(data).forEach(key =>{
 		const divElement = document.createElement('div');
@@ -39,8 +39,6 @@ const updateUI = (data)=>{
 		divElement.innerHTML = `${key}: ${data[key]}`;
 		resultDiv.appendChild(divElement);
 	});
-
-	// document.querySelector('.enter').reset();
 }
 
 
@@ -49,17 +47,19 @@ const updateUI = (data)=>{
 document.addEventListener('DOMContentLoaded', (event) => {
 	//When analyse button is clicked
     const analyseButton = document.getElementById('evaluate-page');
-    analyseButton.addEventListener('click', async ()=>{
+    analyseButton.addEventListener('click', async (event)=>{
+
+    	//reset the results
+    	document.getElementById('results').innerHTML = ``;;
 
     	try {
-    		const userUrl = getUserUrl();
-    		const evaluateResult = await evaluateSentiment('/sentimentapi', userUrl);
-    		updateUI(evaluateResult);
+    		if(validateForm(event)){
+	    		const userUrl = getUserUrl(event);
+	    		const evaluateResult = await evaluateSentiment('/sentimentapi', userUrl);
+	    		updateUI(evaluateResult);
+    		}
     	} catch (err){
     		handleError(err);
     	}
     })
-
-
-
 });
