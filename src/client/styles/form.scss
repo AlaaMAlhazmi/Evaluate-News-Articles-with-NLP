@@ -1,18 +1,47 @@
+@import "vars";
+
 form {
     border: 1px solid #545454;
     border-radius: 3px;
-    padding: 40px;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, .2);
+
+    .input {
+    	flex-grow: 1;
+    }
 }
 
 input {
-    padding: 5px 20px;
     width: 100%;
-    line-height: 16px;
-    margin: 10px 0;
+    line-height: 2rem;
+    padding: .5rem 1rem;
+    border-radius: 7px;
+    border: 1px solid #545454;
+}
+
+button {
+	margin-left: .5rem;
+	background: $firstSecondaryColor;
+	line-height: 2rem;
+	padding: .5rem 1rem;
+	text-decoration: none;
+	color: white;
+	letter-spacing: .08em;
+	border-radius: 7px;
+	border: 1px solid #545454;
+
+  	&:focus, &:hover {
+      background: $secondSecondaryColor;
+      border: 1px solid white;
+      color: white;
+  	}
 }
 
 .validation-text {
 	display: none;
+	margin: .5rem;
 }
 
 .was-validated {
@@ -23,5 +52,22 @@ input {
 	.validation-text {
 		display: block;
 		color: #971515;
+	}
+}
+
+@media (max-width: 576px){
+	form {
+	    border: 1px solid #545454;
+	    border-radius: 3px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: stretch;
+
+	    button {
+	    	margin-left: 0px;
+	    	margin-top: .5rem;
+	    	padding: .1rem 1rem;
+
+	    }
 	}
 }

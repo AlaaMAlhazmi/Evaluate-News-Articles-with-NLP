@@ -17,6 +17,10 @@ export const validateForm = (event)=>{
 		urlInput.nextElementSibling.innerHTML = 'You didn\'t add the URL, Please check the URL and try again';
 	};
 
+	if(urlInput.validity.valueMissing){
+		urlInput.nextElementSibling.innerHTML = 'You didn\'t add the URL, Please check the URL and try again';
+	};
+
 	//handling validation
 	if (inputForm.checkValidity() === false){
 		event.preventDefault();

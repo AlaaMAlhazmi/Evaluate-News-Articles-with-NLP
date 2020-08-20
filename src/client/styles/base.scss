@@ -2,6 +2,8 @@
 @import 'footer';
 @import 'header';
 @import 'form';
+@import "vars";
+@import url('https://fonts.googleapis.com/css?family=Rubik:500');
 
 body {
     display: flex;
@@ -13,9 +15,42 @@ body {
 
 main {
     flex: 2;
+    background-color: rgba(231, 232, 228, .4);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-family: 'Rubik', sans-serif;
+
+    p {
+		margin: 1rem 2rem;
+	}
 }
 
 section {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 2rem auto;
 }
+
+.results {
+	border: 1px solid #545454;
+    border-radius: 3px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, .2);
+
+    p {
+    	color: $primaryColor;
+    	text-transform: lowercase;
+
+    	&::first-line {
+			text-transform: capitalize;
+		}
+    }
+
+    strong {
+    	color: $secondSecondaryColor;
+    	text-transform: uppercase;
+    }
+}
+
+

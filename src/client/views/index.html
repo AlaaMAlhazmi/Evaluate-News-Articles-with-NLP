@@ -10,29 +10,30 @@
     <body>
 
         <header>
-            <div class="logo fa-stack fa-2x">
-                <p class="fas fa-file fa-stack-2x fa-inverse"></p>
-                <p class="fas fa-brain fa-stack-1x"></p>
+            <div class="logo">
+                <p>{</p>
+                <p class="fas fa-brain"></p>
+                <p>}</p>
             </div>
-            <div><hr></div>
+            <div class="name">
+                Evaluate News <br> with NLP
+            </div>
         </header>
 
         <main>
             <section>
-                <div class="name">
-                    Evaluate a News Article with Natural Language Processing
-                </div>
-            </section>
-            <section>
+                <p><strong>Add your Post URL in the below field</strong></p>
                 <form class="enter needs-validation" novalidate>
-                    <input id="user-url" type="text" value="" placeholder="The URL should start with https:// or http://" pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" required>
-                    <div class="validation-text"></div>
+                    <div class="input">
+                        <input id="user-url" type="text" value="" placeholder="The URL should start with https:// or http://" pattern="[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" required>
+                        <div class="validation-text"></div>
+                    </div>
                     <button id="evaluate-page" type="button" >Evaluate Page</button>
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
+                <p><strong>Evaluation Results:</strong></p>
                 <div id="results">
                     <!-- dynamically added content -->
                 </div>
@@ -41,12 +42,12 @@
 
         <footer>
           <div class="page-footer">
-            <div>
+            <div class="rights">
               <span> Evaluate News with NLP &copy; 2020</span>
             </div>
             <div class="social-buttons">
-                <i><a class="fab fa-twitter-square mr-4 fa-2x" target="_blank" title="Twitter" href=""></a></i>
-                <i><a class="fab fa-github mr-4 fa-2x" target="_blank" title="GitHub" href=""></a></i>
+                <a class="fab fa-twitter-square fa-2x" target="_blank" title="Twitter" href=""></a>
+                <a class="fab fa-github fa-2x" target="_blank" title="GitHub" href=""></a>
             </div>
           </div>
         </footer>

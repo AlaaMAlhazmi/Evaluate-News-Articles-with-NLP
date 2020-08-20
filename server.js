@@ -11,13 +11,12 @@ var bodyParser = require('body-parser')
 const app = express()
 
 app.use(bodyParser.json());
-app.use(express.static('../../dist'))
-
-//console.log(__dirname)
+// app.use(express.static('../../dist'))
+app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
-    //res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('../../dist/index.html'))
+    res.sendFile('dist/index.html')
+    // res.sendFile(path.resolve('../../dist/index.html'))
 })
 
 

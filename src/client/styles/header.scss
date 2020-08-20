@@ -1,6 +1,30 @@
 header {
     display: flex;
-    justify-content: right;
+    align-items: flex-end;
+    padding: 1rem 4rem;
+
+    .logo {
+    	display: flex;
+    	color: white;
+    	margin-top: 1rem;
+    	font-size: 2.5rem;
+    }
+
+    .name {
+    	font-family: 'Rubik', sans-serif;
+    	margin-top: 1rem;
+    	color: white;
+    }
+}
+
+
+@media (max-width: 992px){
+  header {
+    flex-direction: column;
+    font-size: .8rem;
     align-items: center;
-    padding: 10px 40px;
+  }
+    .name {
+    	text-align: center;
+    }
 }

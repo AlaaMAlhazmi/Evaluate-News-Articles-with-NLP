@@ -32,11 +32,12 @@ const getUserUrl = ()=>{
 // Update UI
 const updateUI = (data)=>{
 	const resultDiv = document.getElementById('results');
+	resultDiv.classList.add("results");
 	
 	Object.keys(data).forEach(key =>{
 		const divElement = document.createElement('div');
 		divElement.classList.add(`${key}`);
-		divElement.innerHTML = `${key}: ${data[key]}`;
+		divElement.innerHTML = `<p><strong>${key}: </strong> ${data[key]}</p>`;
 		resultDiv.appendChild(divElement);
 	});
 }
