@@ -24,6 +24,16 @@ app.get('/', function (req, res) {
 app.post('/sentimentapi', async(req, res) =>{
 
 	try {
+
+		const polarityValues = {
+			'P+': 'strong positive',
+			'P': 'positive',
+			'NEU': 'neutral',
+			'N': 'negative',
+			'N+': 'strong negative',
+			'NONE': 'without sentiment'
+		};
+
 		let apiUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${application_key}&url=${req.body.userUrl}&lang=en`;
 
 		let response = await fetch(apiUrl);
@@ -35,6 +45,7 @@ app.post('/sentimentapi', async(req, res) =>{
 			evaluation.confidence = data.confidence;
 			evaluation.irony = data.irony;
 			evaluation.subjectivity = data.subjectivity;
+			evaluation.polarity = polarityValues[data.score_tag];
 
 			res.json(evaluation)
 
