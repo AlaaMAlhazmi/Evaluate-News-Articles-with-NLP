@@ -27,7 +27,7 @@ This project is a web tool that allows users to run Natural Language Processing 
 1. Clone the repo or download the files.
 2. Replace the API KEY
 3. Run the command "node server.js" in the server folder. 
-4. Run the command "npm run build-dev".
+4. Run the command "npm run build-prod".
 5. The server should start on http://localhost:8081.
 
 ## Project live link
